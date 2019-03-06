@@ -13,6 +13,7 @@ class Dance {
 
   _render() {
     const vnode = t(this.$template, this.$state);
+    console.log("vnode", vnode);
   }
 }
 

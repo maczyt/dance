@@ -59,12 +59,12 @@ template(tmpl, data); // <div><h1>Hello World</h1></div>
 
 **那么我们如何解析 html 字符串为虚拟 DOM 节点呢？**, 限于篇幅，我们将使用[htm](https://github.com/developit/htm)库来实现，具体可以看我之前的文章[如何解析 template 成 VNODE](https://maczyt.github.io/2019/03/02/%E5%A6%82%E4%BD%95%E8%A7%A3%E6%9E%90template%E6%88%90VNODE/)
 
-具体的是 htm 库会解析字符串中的元素, 收集到元素的 tagName，元素的 attributes 和元素的子节点。并且把这些数据作为参数传给我们绑定的函数。
+具体的是 htm 库会解析字符串中的元素, 收集到元素的 tagName，元素的 props 和元素的子节点。并且把这些数据作为参数传给我们绑定的函数。
 
 ```js
 import htm from "htm";
 
-function h(tagName, attributes, ...children) {}
+function h(tagName, props, ...children) {}
 const html = htm.bind(h);
 ```
 
@@ -76,8 +76,8 @@ const html = htm.bind(h);
 import { el, diff, patch } from "simple-virtual-dom";
 import htm from "htm";
 
-function h(tagName, attributes, ...children) {
-  return new el(tagName, attributes, ...children);
+function h(tagName, props, ...children) {
+  return new el(tagName, props, ...children);
 }
 const html = htm.bind(h);
 

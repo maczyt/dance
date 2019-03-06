@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "delegate": "^3.2.0",
+    "htm": "^2.1.1",
     "simple-virtual-dom": "^0.1.10"
   }
 }
