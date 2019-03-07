@@ -33,7 +33,8 @@ function deal_logic(str) {
    */
   if (index === 0) {
     // 去除换行空格，避免new Function解析报错
-    _str += `str += '${str_format(str)}';`;
+    _str += `str += '${str_format(str)}';\n`;
+    _str += "return str;";
     return _str;
     // return str.replace(/\s*(\n|\r)\*/g, "");
   }

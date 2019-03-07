@@ -1,9 +1,5 @@
 # 动手创建一个 MVVM 框架
 
-## 进度
-
-1. 2019/3/6 70%
-
 ## 知识点
 
 1. 模板引擎
@@ -74,14 +70,14 @@ const html = htm.bind(h);
 
 ### virtual dom
 
-这里我们使用`simple-virtual-dom`库来实现虚拟 DOM 处理，我们对上面函数 h 做一点调整。
+这里我们使用[`simple-virtual-dom`](https://github.com/livoras/simple-virtual-dom)库来实现虚拟 DOM 处理，我们对上面函数 h 做一点调整。
 
 ```js
 import { el, diff, patch } from "simple-virtual-dom";
 import htm from "htm";
 
 function h(tagName, props, ...children) {
-  return new el(tagName, props, ...children);
+  return new el(tagName, props, children);
 }
 const html = htm.bind(h);
 
@@ -90,12 +86,50 @@ const vnode = html`
 `;
 ```
 
-通过上面几步，我们已实现 template + data -> html_str -> vnode。
+通过上面几步，我们已实现 `template + data -> html_str -> vnode`。
 
 这个时候，只要我们把 vnode 挂载到具体 DOM 元素上即能看到效果。并且当 data 发生改变时，我们再执行:
 
-`template + data -> template + data -> html_str -> new vnode`, 通过 diff 算法比较新旧虚拟节点树，并 patch 到 DOM 上，实现了一个简单的 MVVM。
+`template + data -> html_str -> new vnode`, 通过 diff 算法比较新旧虚拟节点树，并 patch 到 DOM 上。
+
+更多 virtual dom 知识可以查看文章[深度剖析：如何实现一个 Virtual DOM 算法](https://github.com/livoras/blog/issues/13)
 
 ### 事件委托
 
-在元素上绑定的事件，通过事件委托，在 window 对象上处理，节约开销。事件委托的实现原理可以阅读[delegate](https://www.npmjs.com/package/delegate)源码
+在元素上绑定的事件，通过事件委托，在 window 对象上处理，节约开销。事件委托的实现原理可以阅读[delegate](https://www.npmjs.com/package/delegate)源码。
+
+为了能进行准确的元素事件委托，这里我们会在`simple-virtual-dom`库中，对每个节点，增加一个`uid`，当`render`的时候，给 DOM 元素增加属性`dance-el-${uid}`。
+
+然后在事件委托处理中，通过属性选择器来对具体的元素进行事件处理。
+
+eg. `delegate(window, '[dance-el-${uid}]', 'click', callback)`
+
+## 进度
+
+1. 2019/3/6 70%
+2. 2019/3/7 100%
+
+```
+  1. fix template 模板引擎 bug
+  2. 增加事件代理
+  3. 增加 example: count
+```
+
+## example
+
+### 运行
+
+```shell
+1. git clone https://github.com/maczyt/dance.git
+2. yarn or npm install
+3. yarn run [xxx]
+```
+
+1. [Count](./example/count) `yarn run em:count`
+
+### TODO
+
+1. 组件
+2. props
+3. setState 的异步执行
+4. 还在想

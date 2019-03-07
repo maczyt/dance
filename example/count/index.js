@@ -1,14 +1,29 @@
 import Dance from "../../index";
 
 new Dance({
+  el: "#app",
   state: {
-    t: "Hello World"
+    count: 0
+  },
+  methods: {
+    handleAdd() {
+      this.setState({
+        count: this.state.count + 1
+      });
+    },
+    handleMin() {
+      this.setState({
+        count: this.state.count - 1
+      });
+    }
   },
   template: `
     <div>
-      <% if (t) { %>
-        <h1><%= t %></h1>
-        <% } %>
+      <h1>Dance Count</h1>
+      <p>Count: <%= count %></p>
+      <p>
+        <button @click="handleAdd">+</button> <button @click="handleMin">-</button>
+      </p>
     </div>
   `
 });
