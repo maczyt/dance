@@ -104,6 +104,8 @@ const vnode = html`
 
 eg. `delegate(window, '[dance-el-${uid}]', 'click', callback)`
 
+具体代码: [./simple-virtual-dom/lib/element.js](./simple-virtual-dom/lib/element.js)
+
 ## 进度
 
 1. 2019/3/6 70%
@@ -116,6 +118,8 @@ eg. `delegate(window, '[dance-el-${uid}]', 'click', callback)`
 ```
 
 ## example
+
+### [Live demo](https://maczyt.github.io/dance)
 
 ### 运行
 
@@ -132,4 +136,4 @@ eg. `delegate(window, '[dance-el-${uid}]', 'click', callback)`
 1. 组件
 2. props
 3. setState 的异步执行
-4. 还在想
+4. 还在想. 🤭
