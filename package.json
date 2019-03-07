@@ -8,7 +8,10 @@
     "em:todo": "parcel serve ./example/todo/index.html",
     "deploy": "gh-pages -d live"
   },
-  "repository": "git@github.com:maczyt/dance.git",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/maczyt/dance.git"
+  },
   "author": "maczyt <369280416@qq.com>",
   "license": "MIT",
   "devDependencies": {
@@ -19,5 +22,16 @@
     "delegate": "^3.2.0",
     "htm": "^2.1.1",
     "simple-virtual-dom": "^0.1.10"
-  }
+  },
+  "description": "1. 模板引擎\r 2. 模板解析\r 3. virtual dom\r 4. 事件代理",
+  "bugs": {
+    "url": "https://github.com/maczyt/dance/issues"
+  },
+  "homepage": "https://github.com/maczyt/dance#readme",
+  "directories": {
+    "example": "example"
+  },
+  "keywords": [
+    "MVVM"
+  ]
 }
