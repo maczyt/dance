@@ -119,7 +119,7 @@ eg. `delegate(window, '[dance-el-${uid}]', 'click', callback)`
 
 ## example
 
-### [Live demo](https://maczyt.github.io/dance)
+### [Live demo](https://maczyt.github.io/dance/index.html)
 
 ### 运行
 
