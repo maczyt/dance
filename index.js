@@ -38,6 +38,7 @@ class Dance {
     const newTree = t(this.$template, this.state);
     const patches = diff(this.$tree, newTree);
     patch(this.$root, patches);
+    this.$tree = newTree;
   }
 }
 
