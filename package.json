@@ -6,6 +6,7 @@
     "em:count": "parcel serve ./example/count/index.html",
     "em:count:build": "parcel build ./example/count/index.html --no-source-maps --public-url /dance -d live -o count.html",
     "em:todo": "parcel serve ./example/todo/index.html",
+    "em:todo:build": "parcel build ./example/todo/index.html --no-source-maps --public-url /dance -d live -o todo.html",
     "deploy": "gh-pages -d live"
   },
   "repository": {
