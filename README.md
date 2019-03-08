@@ -136,6 +136,7 @@ eg. `delegate(window, '[dance-el-${uid}]', 'click', callback)`
 ```
 
 1. [Count](./example/count) `yarn run em:count`
+2. [Count](./example/todo) `yarn run em:todo`
 
 ### TODO
 
