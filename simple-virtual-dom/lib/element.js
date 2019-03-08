@@ -47,9 +47,10 @@ function Element(tagName, props, children) {
 /**
  * Render the hold element tree.
  */
-Element.prototype.render = function(vm) {
+Element.prototype.render = function() {
   var el = document.createElement(this.tagName);
   var props = this.props;
+  const vm = this._vm;
 
   for (var propName in props) {
     var propValue = props[propName];
@@ -59,6 +60,14 @@ Element.prototype.render = function(vm) {
       delegate(window, `[dance-el-${this.uid}]`, propName.slice(1), callback);
       continue;
     }
+    // if (propName.startsWith("d-")) {
+    //   propName = propName.slice(2);
+    //   // 属性处理
+    //   if (propValue === false && propName !== "class") {
+    //     el.removeAttribute(propName);
+    //     continue;
+    //   }
+    // }
     _.setAttr(el, propName, propValue);
   }
   // 添加uid属性
@@ -67,7 +76,7 @@ Element.prototype.render = function(vm) {
   _.each(this.children, function(child) {
     var childEl =
       child instanceof Element
-        ? child.render(vm)
+        ? child.render()
         : document.createTextNode(child);
     el.appendChild(childEl);
   });

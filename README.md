@@ -117,6 +117,12 @@ eg. `delegate(window, '[dance-el-${uid}]', 'click', callback)`
   3. 增加 example: count
 ```
 
+3. 2019/3/8
+
+```
+1. 解决props条件渲染，增加:属性判断
+```
+
 ## example
 
 ### [Live demo](https://maczyt.github.io/dance/index.html)

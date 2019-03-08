@@ -17,7 +17,10 @@ class Dance {
   _render() {
     const tree = t(this.$template, this.state);
     this.$tree = tree;
-    this.$root = tree.render(this);
+    tree.render._vm = this;
+    // vm挂载到元素构造器原型上,避免patch时候获取不到vm
+    tree.constructor.prototype._vm = this;
+    this.$root = tree.render();
     // 挂载的元素
     let mountEl = this.$options.el;
     if (typeof mountEl === "undefined") {
@@ -26,11 +29,14 @@ class Dance {
     mountEl = document.querySelector(mountEl);
     mountEl.innerHTML = "";
     mountEl.appendChild(this.$root);
+
+    if (this.$options.mounted) {
+      this.$options.mounted.call(this);
+    }
   }
 
   setState(newState) {
     this.state = newState;
-
     this.forceUpdate();
   }
 

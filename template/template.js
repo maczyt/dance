@@ -14,7 +14,7 @@ function str_format(str) {
  * @param {*} str
  */
 function deal_logic(str) {
-  const REG = /<%([^=%]*)%>/g;
+  const REG = /<%[^=]([^%]*)%>/g;
   let _str = 'let str = "";\n';
   let exec;
   let index = 0;

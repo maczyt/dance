@@ -1,64 +1,62 @@
-var _ = exports
+var _ = exports;
 
-_.type = function (obj) {
-  return Object.prototype.toString.call(obj).replace(/\[object\s|\]/g, '')
-}
+_.type = function(obj) {
+  return Object.prototype.toString.call(obj).replace(/\[object\s|\]/g, "");
+};
 
-_.isArray = function isArray (list) {
-  return _.type(list) === 'Array'
-}
+_.isArray = function isArray(list) {
+  return _.type(list) === "Array";
+};
 
-_.slice = function slice (arrayLike, index) {
-  return Array.prototype.slice.call(arrayLike, index)
-}
+_.slice = function slice(arrayLike, index) {
+  return Array.prototype.slice.call(arrayLike, index);
+};
 
-_.truthy = function truthy (value) {
-  return !!value
-}
+_.truthy = function truthy(value) {
+  return !!value;
+};
 
-_.isString = function isString (list) {
-  return _.type(list) === 'String'
-}
+_.isString = function isString(list) {
+  return _.type(list) === "String";
+};
 
-_.each = function each (array, fn) {
+_.each = function each(array, fn) {
   for (var i = 0, len = array.length; i < len; i++) {
-    fn(array[i], i)
+    fn(array[i], i);
   }
-}
+};
 
-_.toArray = function toArray (listLike) {
+_.toArray = function toArray(listLike) {
   if (!listLike) {
-    return []
+    return [];
   }
 
-  var list = []
+  var list = [];
 
   for (var i = 0, len = listLike.length; i < len; i++) {
-    list.push(listLike[i])
+    list.push(listLike[i]);
   }
 
-  return list
-}
+  return list;
+};
 
-_.setAttr = function setAttr (node, key, value) {
+_.setAttr = function setAttr(node, key, value) {
   switch (key) {
-    case 'style':
-      node.style.cssText = value
-      break
-    case 'value':
-      var tagName = node.tagName || ''
-      tagName = tagName.toLowerCase()
-      if (
-        tagName === 'input' || tagName === 'textarea'
-      ) {
-        node.value = value
+    case "style":
+      node.style.cssText = value;
+      break;
+    case "value":
+      var tagName = node.tagName || "";
+      tagName = tagName.toLowerCase();
+      if (tagName === "input" || tagName === "textarea") {
+        node.value = value;
       } else {
         // if it is not a input or textarea, use `setAttribute` to set
-        node.setAttribute(key, value)
+        node.setAttribute(key, value);
       }
-      break
+      break;
     default:
-      node.setAttribute(key, value)
-      break
+      node.setAttribute(key, value);
+      break;
   }
-}
+};
