@@ -36,7 +36,7 @@ class Dance {
   }
 
   setState(newState) {
-    this.state = newState;
+    Object.assign(this.state, newState);
     this.forceUpdate();
   }
 

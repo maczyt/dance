@@ -140,7 +140,7 @@ eg. `delegate(window, '[dance-el-${uid}]', 'click', callback)`
 
 ### TODO
 
-1. 组件
-2. props
-3. setState 的异步执行
-4. 还在想. 🤭
+- [ ] 组件
+- [ ] props
+- [ ] setState 的异步执行
+- [ ] 还在想. 🤭
