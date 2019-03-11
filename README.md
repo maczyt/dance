@@ -137,10 +137,12 @@ eg. `delegate(window, '[dance-el-${uid}]', 'click', callback)`
 
 1. [Count](./example/count) `yarn run em:count`
 2. [Todo](./example/todo) `yarn run em:todo`
+3. [setState 同步](./example/setState-sync) `yarn run em:sync`
+4. [setState 异步](./example/setState-async) `yarn run em:async`
 
 ### TODO
 
 - [ ] 组件
 - [ ] props
-- [ ] setState 的异步执行
+- [x] setState 的异步执行 _使用 debounce 实现_
 - [ ] 还在想. 🤭
