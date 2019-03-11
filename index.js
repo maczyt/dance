@@ -5,6 +5,7 @@ class Dance {
   constructor(options) {
     const { template, state, methods } = options;
     this.state = state;
+    this._asyncStateTimer = null;
 
     this.$template = template;
     this.$methods = methods;
@@ -35,9 +36,18 @@ class Dance {
     }
   }
 
-  setState(newState) {
-    Object.assign(this.state, newState);
-    this.forceUpdate();
+  setState(newState, sync) {
+    // 同步更新
+    if (sync) {
+      Object.assign(this.state, newState);
+      this.forceUpdate();
+    } else {
+      clearTimeout(this._asyncStateTimer);
+      this._asyncStateTimer = setTimeout(() => {
+        Object.assign(this.state, newState);
+        this.forceUpdate();
+      }, 200);
+    }
   }
 
   forceUpdate() {
