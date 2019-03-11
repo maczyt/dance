@@ -51,7 +51,7 @@ function deal_logic(str) {
 
 function deal_data(str) {
   const REG = /<%=([^%]*)%>/g;
-  return str.replace(REG, ($0, $1) => `'+ ${$1} +'`);
+  return str.replace(REG, ($0, $1) => `'+ (${$1}) +'`);
 }
 
 export default function template(source, data) {

@@ -132,6 +132,9 @@ new Dance({
       false
     );
   },
+  updated() {
+    console.log(this.state);
+  },
   template: `
     <div>
       <section class="todoapp">
@@ -146,7 +149,7 @@ new Dance({
             <% for (let todo of list.filter(item => { if(type === 'all') return true; if (type === 'active') return !item.completed; if(type==='completed') return item.completed; })) { %>
               <li class="<%= (todo.completed ? 'completed' : '') %>" index="<%= todo.id %>">
                 <div class="view">
-                  <input @change="handleToggle" type="checkbox" class="toggle" <%= (todo.completed ? 'checked' : '') %> />
+                  <input @change="handleToggle" type="checkbox" class="toggle" />
                   <label @dblclick="handleEdit" for="true"><%= todo.title %></label>
                   <button class="destroy" @click="handleDestroy"></button>
                 </div>

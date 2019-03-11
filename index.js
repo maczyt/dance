@@ -45,6 +45,10 @@ class Dance {
     const patches = diff(this.$tree, newTree);
     patch(this.$root, patches);
     this.$tree = newTree;
+
+    if (this.$options.updated) {
+      this.$options.updated.call(this);
+    }
   }
 }
 
